@@ -9,12 +9,14 @@ import { HomePage } from '../pages/home/home';
 import {NewPlacePage} from "../pages/new-place/new-place";
 import {PlacesService} from "../services/places.service";
 import {IonicStorageModule} from "@ionic/storage";
+import {EditPage} from "../pages/edit/edit";
 
 @NgModule({
   declarations: [
     NewPlacePage,
     MyApp,
-    HomePage
+    HomePage,
+    EditPage
   ],
   imports: [
     BrowserModule,
@@ -25,7 +27,8 @@ import {IonicStorageModule} from "@ionic/storage";
   entryComponents: [
     NewPlacePage,
     MyApp,
-    HomePage
+    HomePage,
+    EditPage
   ],
   providers: [
     PlacesService,

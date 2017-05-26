@@ -20,8 +20,13 @@
         <button  ion-button icon-only (click)="delete(value)">
           <ion-icon name="trash"></ion-icon>
         </button>
-      </ion-buttons>
+      </ion-buttons><ion-buttons end>
+      <button  ion-button icon-only (click)="edit(value)">
+        <ion-icon name="clipboard"></ion-icon>
+      </button>
+    </ion-buttons>
     </ion-item>
 
   </ion-list>
+  <button ion-button (click)="check()">check</button>
 </ion-content>

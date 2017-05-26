@@ -17,11 +17,11 @@ export class PlacesService {
   }
 
   getPlaces() {
-    this.storage.get('places')
+    return this.places ? Promise.resolve(this.places) : this.storage.get('places')
       .then(
         (places) => {
-          this.places = [] || places;
-          return this.places
+          this.places = places || [];
+          return Promise.resolve(this.places)
         }
       )
   }
