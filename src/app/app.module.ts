@@ -6,22 +6,29 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import {NewPlacePage} from "../pages/new-place/new-place";
+import {PlacesService} from "../services/places.service";
+import {IonicStorageModule} from "@ionic/storage";
 
 @NgModule({
   declarations: [
+    NewPlacePage,
     MyApp,
     HomePage
   ],
   imports: [
     BrowserModule,
+    IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
+    NewPlacePage,
     MyApp,
     HomePage
   ],
   providers: [
+    PlacesService,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
