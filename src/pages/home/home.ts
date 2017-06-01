@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
 import { NewPlacePage } from "../new-place/new-place";
-import { PlacesService } from "../../services/places.service";
 import { Storage } from '@ionic/storage';
 import {EditPage} from "../edit/edit";
 
@@ -11,27 +10,44 @@ import {EditPage} from "../edit/edit";
   templateUrl: 'home.html'
 })
 export class HomePage {
-  places: {title: string}[] = [];
+  places: {title: any,description:any}[] = [];
 
-  constructor(public storage:Storage,public navCtrl: NavController, private placesService: PlacesService) {
+  constructor(public storage:Storage,public navCtrl: NavController) {
+  this.places = [
+    {title:'a',description:'a'},
+    {title:'b',description:'b'},
+    {title:'c',description:'c'},
+    {title:'d',description:'d'},
+    {title:'e',description:'e'},
+  ]
 
   }
+
+// get(){
+//   this.storage.get('places').then(places => this.places = places);
+// }
 
   ionViewWillEnter() {
-    return this.places ? Promise.resolve(this.places) : this.storage.get('places');
+    // this.get()
+
   }
-  check(){
-    console.log(this.places)
-  }
+
   onLoadNewPlace() {
     this.navCtrl.push(NewPlacePage);
   }
-  delete(value){
-    this.places.splice(value,1);
-    this.placesService.removePlace(value)
-  }
+  delete(place) {
+
+    this.places.splice(place, 1);
+    this.storage.set('places',this.places)
+    }
+
   edit(value){
    let slice = this.places.slice(value,1);
     this.navCtrl.push(EditPage,slice)
   }
+  console(){
+    console.log(this.places.length)
+  }
+
+
 }

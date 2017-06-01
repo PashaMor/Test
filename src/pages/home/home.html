@@ -12,21 +12,19 @@
 </ion-header>
 
 <ion-content padding>
+
+
   <ion-list>
-    <ion-item *ngFor="let place of places">
-
-      {{ place.title }}
-      <ion-buttons end>
-        <button  ion-button icon-only (click)="delete(value)">
-          <ion-icon name="trash"></ion-icon>
-        </button>
-      </ion-buttons><ion-buttons end>
-      <button  ion-button icon-only (click)="edit(value)">
-        <ion-icon name="clipboard"></ion-icon>
-      </button>
-    </ion-buttons>
-    </ion-item>
-
+    <ion-item-sliding  *ngFor="let place of places">
+      <ion-item>
+        {{ place.title }}
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="delete(value)"><ion-icon name="trash"></ion-icon>Delete</button>
+        <button ion-button color="secondary" (click)="edit(value)"><ion-icon name="clipboard"></ion-icon>Edit</button>
+        <button ion-button color="secondary" (click)="consolee(place)"><ion-icon name="add"></ion-icon>Edit</button>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
-  <button ion-button (click)="check()">check</button>
+  <button ion-button (click)="console()">console</button>
 </ion-content>
